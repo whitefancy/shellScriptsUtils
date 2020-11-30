@@ -9,14 +9,18 @@
 # 使用getopts 从输入参数中读取配置 参数list=【日志文件夹，目标日志list，目标文件list】
 # -f -t -c
 # /bin/bash 2020logFiles.sh -log_folder /www/p16s/p16s_pay/log -log_titles /home/buwenfeng/loglist.txt -log_contents /home/buwenfeng/target_test1.txt
-# /bin/bash 2020logFiles.sh -f /Users/jedigame/github/dockerBasicPlatform -t /Users/jedigame/github/shellScriptsUtils/loglist.txt -c /Users/jedigame/github/shellScriptsUtils/log_1.txt
+# /bin/bash logFiles2ways.sh -f /Users/jedigame/github/dockerBasicPlatform -t /Users/jedigame/github/shellScriptsUtils/loglist.txt -c /Users/jedigame/github/shellScriptsUtils/log_1.txt
+# # /bin/bash 2020logFiles.sh -f /www/p20gate/pay/log -t ~/loglist.txt -c ~/log_1.txt -l ~/loglist.txt
+#/bin/bash logFiles2ways.sh -f /Users/jedigame/github/dockerBasicPlatform -t /Users/jedigame/github/shellScriptsUtils/loglist.txt -c /Users/jedigame/github/shellScriptsUtils/log_1.txt
+
 #如果参数不存在，则会报错
-while getopts ':f:t:c:' opts
+while getopts ':f:t:c:l:' opts
 do
   case "$opts" in
     f) folder_path=$OPTARG ;;
     t) target_file1=$OPTARG ;;
     c) target_file=$OPTARG ;;
+    l) list_file=$OPTARG ;;
     ?) ;;#过滤未知参数
   esac
 done
@@ -32,15 +36,17 @@ if [ ! -f "$target_file" ]; then
   touch "$target_file"
 fi
 
-
-strB="2020"
 #创建临时保存日志到数组 A 日志文件名  B 日志末尾几行
 A=(none)
 B=(none)
-index=0
-# for 遍历目录下所有文件名
-for line in $(ls "$folder_path") ; do
-  #判断为文件而不是目录
+index=0;
+# 使用带参数的函数来减少重复代码
+function checklog() {
+  line=$1
+  strB="2020"
+  A=$2
+  B=$3
+    #判断为文件而不是目录
   if [ -f $line ]
   then
     #将命令结果赋值给变量
@@ -57,7 +63,23 @@ for line in $(ls "$folder_path") ; do
       index=$index+1
     fi
   fi
-done
+}
+cd $folder_path
+#判断变量是否赋值
+if [ -n "$list_file" ];then
+  # 遍历文件中每一行
+  echo "read file from filelist"
+  while  read line ; do
+    checklog $line $A $B 
+  done < $list_file
+else
+  echo "find file from folder"
+  # for 遍历目录下所有文件名
+  for line in $(ls "$folder_path") ; do
+    checklog $line $A $B
+  done
+fi
+
 #获取数组长度
 len=${#A[*]}
 echo $len
