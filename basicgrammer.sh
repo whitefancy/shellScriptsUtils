@@ -11,7 +11,13 @@ echo $? $$ $0 $# # 0 23577 /Users/jedigame/github/shellScriptsUtils/1.sh 0
 #执行shell脚本方法
 #
 #给该脚本回执行权限 如: chmod  a+x 1.sh    然后直接可执行
-#
+chmod -R a+r *
+此外chmod也可以用数字来表示权限如 :
+
+chmod 777 file
+语法为：
+
+chmod abc file
 #通过  . 1.sh  执行
 #
 #通过 source 1.sh 执行
