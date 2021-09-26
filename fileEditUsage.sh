@@ -1,36 +1,34 @@
-三,文件管理与编辑
-$ touch -a daemon.json 新建一个修改时间为系统当前时间的文件。
-$ vi +daemon.json 打开文件,光标位于最后一行开头。
-$ esc 从文本编辑返回到命令行模式。
-$ cp,mv,rm 文件的复制,移动与删除命令
--d:直接把欲删除的目录的硬连接数据删除成0,删除该目录； -f:强制删除文件或目录； -i:删除已有文件或目录之前先询问用户； -r或-R:递归处理,将指定目录下的所有文件与子目录一并处理； --preserve-root:不对根目录进行递归操作； -v:显示指令的详细执行过程。
-$ wget 通过url下载
-$ unzip cased_L-12_H-768_A-12.zip -d bert 解压zip
-$tar -zxvf java.tar.gz -C /usr/java 解压tar.gz文件
-Tree . 列出目录结构
-windows下tree命令列出文件目录树
-tree [path] /f
-tree D:AR_C_Team /f
-可以将D:AR_C_Team目录下所有目录及子目录下的文件都打印出来
-tree D:AR_C_Team /f > %HOMEPATH%\file_tree.txt
-将D:AR_C_Team目录下所有目录及子目录下的文件都打印出来并重定向到一个文件中
-tree命令的中文意思为“树”,功能是以树形结构列出指定目录下的所有内容,包括所有文件,子目录及子目录里的目录和文件。
-命令格式
-tree [option] [directory]
-tree [选项] [目录]
-说明:
-1）注意tree命令以及后面的选项和目录,每个元素之间都至少要有一个空格
-2）tree命令后若不接选项和目录就会默认显示当前所在路径目录的目录结构
-tree命令的参数选项及说明,图片来源于 【跟老男孩学Linux运维:核心系统命令】
--I:命令允许你使用正则匹配来排除掉你不想看到的文件夹
-举例
-在举例前,我们是不是应该安装好tree命令呢？（如果你也采用最小化安装Linux系统的方式,那么tree命令可能没有安装,此时我们应该用yum命令来安装tree命令）
- [root@king ~]# rpm -qa tree #<==查询tree命令是否安装。
+#三,文件管理与编辑
+touch -a daemon.json #新建一个修改时间为系统当前时间的文件。
+vi +daemon.json #打开文件,光标位于最后一行开头。
+esc #从文本编辑返回到命令行模式。
+#cp,mv,rm 文件的复制,移动与删除命令
+#-d:直接把欲删除的目录的硬连接数据删除成0,删除该目录； -f:强制删除文件或目录； -i:删除已有文件或目录之前先询问用户； -r或-R:递归处理,将指定目录下的所有文件与子目录一并处理； --preserve-root:不对根目录进行递归操作； -v:显示指令的详细执行过程。
+wget #通过url下载
+unzip cased_L-12_H-768_A-12.zip -d bert #解压zip
+$tar -zxvf java.tar.gz -C /usr/java #解压tar.gz文件
+Tree . #列出目录结构
+#windows下tree命令列出文件目录树
+#tree [path] /f
+#tree D:AR_C_Team /f
+#可以将D:AR_C_Team目录下所有目录及子目录下的文件都打印出来
+#tree D:AR_C_Team /f > %HOMEPATH%\file_tree.txt
+#将D:AR_C_Team目录下所有目录及子目录下的文件都打印出来并重定向到一个文件中
+#tree命令的中文意思为“树”,功能是以树形结构列出指定目录下的所有内容,包括所有文件,子目录及子目录里的目录和文件。
+#命令格式
+#tree [option] [directory]
+#tree [选项] [目录]
+#说明:
+#1）注意tree命令以及后面的选项和目录,每个元素之间都至少要有一个空格
+#2）tree命令后若不接选项和目录就会默认显示当前所在路径目录的目录结构
+#tree命令的参数选项及说明,图片来源于 【跟老男孩学Linux运维:核心系统命令】
+#-I:命令允许你使用正则匹配来排除掉你不想看到的文件夹
+rpm -qa tree #<==查询tree命令是否安装。
 tree-1.5.3-2.el6.x86_64 #<==如果没有显示就执行下面的命令
-[root@king ~]# yum -y install tree #<==安装tree命令的yum命令
+yum -y install tree #<==安装tree命令的yum命令
  临时解决树结构乱码的方法 
-[root@king ~]# LANG=en_US.UTF-8
-例子一:不带任何参数执行tree命令
+LANG=en_US.UTF-8
+#不带任何参数执行tree命令
 [root@king etc]# cd ~
 [root@king ~]# tree   #<==显示当前目录的结构。
 . #<==“.”以当前目录为起点。

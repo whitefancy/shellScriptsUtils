@@ -290,3 +290,32 @@ $ curl -X POST https://www.example.com
 --3p-user 使用用户名和密码，进行第三方传送
 -4/--ipv4 使用IP4
 -6/--ipv6 使用IP6
+
+nohup java -jar /home/buwenfeng/dummy-0.0.1-SNAPSHOT.jar >temp8.log --server.port=9999  &
+
+标准说法：续行）
+如果直接写在一行，书写起来很长，看起来也不美观还容易漏项。
+
+自然就会想到如何将shell的一行命令拆成多行去执行。
+
+shell已经为我们准备好了这个续行符 "\"，来把一行命令分解成多行
+
+shell命令行下反斜线"\"有两种含义:
+
+1.对有特殊含义的字符进行转义
+
+例如 echo "123\$"，结果是123$
+
+2.\Enter,反斜杠后面紧跟回车，表示下一行是当前行的续航。
+
+./configure --sbin-path=/usr/local/nginx/nginx \
+--conf-path=/usr/local/nginx/nginx.conf \
+--pid-path=/usr/local/nginx/nginx.pid \
+--with-http_ssl_module \
+--with-pcre=/usr/local/src/pcre-8.21 \
+--with-zlib=/usr/local/src/zlib-1.2.8 \
+--with-openssl=/usr/local/src/openssl-1.0.1c
+
+curl -X POST https://gateway.php \
+   -H "Content-Type: application/x-www-form-urlencoded"  \
+   -d "method=deliver&sign=2e2d9906d5e1de53441cb24494cd5fcf"
