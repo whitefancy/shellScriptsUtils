@@ -1,6 +1,6 @@
-svn sw svn://192.168.0.220/project9/运维/【SAD】产品渠道支持开发/国内渠道接入/client/AndroidIntegration/trunk
 
-svn commit -m "fix 编译 错误" clientproject/share_library_temp/src/a31/java/com/jedigames/ObtainDeviceidActivity.java clientproject/share_library_temp/src/a31/java/com/jedigames/ObtainDeviceIdActivity.java
+
+svn commit -m "fix 编译 错误" clientproject/share_library_temp/src/a31/java/com/whitefancy/ObtainDeviceidActivity.java clientproject/share_library_temp/src/a31/java/com/whitefancy/ObtainDeviceIdActivity.java
 
 大多数人创建一个 trunk 目录掌管开发的 "主
 干"，一个 branches 目录存放分支副本，以及一个 tags 目录存放标记副本。如果一个版本库只掌管
@@ -196,6 +196,8 @@ svn sw https://mysvn.cn/svn/repo/project/branches/version-xxx
 创建分支
 svn cp -m "create branch" http://svn_server/xxx_repository/trunk http://svn_server/xxx_repository/branches/br_feature001
 
+
+svn sw http://svn_server/xxx_repository/branches/br_feature001
 获得分支
 svn co http://svn_server/xxx_repository/branches/br_feature001
 
@@ -216,8 +218,6 @@ svn -r 148:149 merge http://svn_server/xxx_repository/trunk
 
 建立tags
 产品开发已经基本完成，并且通过很严格的测试，这时候我们就想发布给客户使用，发布我们的1.0版本
-svn copy http://svn_server/xxx_repository/trunk http://svn_server/xxx_repository/tags/release-1.0 -m "1.0 released"
-
 删除分支或tags
 svn rm http://svn_server/xxx_repository/branches/br_feature001
 svn rm http://svn_server/xxx_repository/tags/release-1.0
@@ -231,3 +231,21 @@ svn switch svn://xx.com/repo/branches/TRY-something
 当然，也可以再转到主干: svn switch svn://xx.com/repo/trunk
 创建分支 svn cp -m "create branch" http://svn_server/xxx_repository/trunk http://svn_server/xxx_repository/branches/br_feature001 
 获得分支 svn co http://svn_server/xxx_repository/branches/br_feature001 合并主干上的最新代码到分支上 cd br_feature001 svn merge http://sv…
+
+svn cleanup — 递归清理工作副本
+
+概要
+svn cleanup [PATH...]
+
+描述
+递归清理工作副本，移除工作副本锁并恢复未完成的操作。如果您遇到working copy locked 错误，请运行此命令以删除过时的锁并使您的工作副本再次进入可用状态。
+
+如果由于某种原因， 由于运行外部 diff 程序的问题（例如，用户输入或网络故障）导致svn 更新失败，请传递 --diff3-cmd以允许清理过程使用您的外部 diff 程序完成任何所需的合并。您还可以使用该--config-dir选项指定任何配置目录，但您应该很少需要这些选项。
+
+选项
+--diff3-cmd CMD
+例子
+嗯，这里的例子并不多，因为 svn cleanup 不产生任何输出。如果传递 no PATH，则使用 “ .”：
+
+$ svn 清理
+$ svn 清理 /var/svn/working-copy

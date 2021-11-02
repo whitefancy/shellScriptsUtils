@@ -13,11 +13,11 @@ tmpfs 306M 0 306M 0% /dev/shm
 #统计根分区的使用率
 rate=$(df -h | grep "/dev/sda3" | awk '{print $5}' | cut -d"%"-f1)
 #把根分区使用率作为变量值赋予变量rate
-if [$rate -ge 80 】
-#判断rate的值，如果大于等于80,则执行then程序
+if [$rate -ge 80]
+  #判断rate的值，如果大于等于80,则执行then程序
 then
-echo 'Warning! /dev/sda3 is full!!"
-#打印警告信息。在实际工作中，也可以向管理员发送邮件
+  echo 'Warning! /dev/sda3 is full!!'
+  #打印警告信息。在实际工作中，也可以向管理员发送邮件
 fi
 其实这个脚本最主要的地方是"rate=$(df-h|grep "/dev/sda3"|awk'{print$5}'|cut-d"%"-f1)"这条命令，我们来分析一下这条命令：先使用"df-h"列出系统中的分区情况；然后使用"grep"命令提取出根分区行；再使用"awk"命令列出第五列，也就是根分区使用率这一列（不过使用率是 10%，不好比较，还要提取出 10 这个数字）；最后使用"cut"命令（cut 命令比 awk 命令简单），以"％"作为分隔符，提取出第一列。
 这条命令的执行结果如下：

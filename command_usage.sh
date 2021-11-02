@@ -16,7 +16,8 @@ ls / dev / sda[12345]
 # 3.1 输入重定向
 # 输入重定向用于改变命令的输入源，可以把一个文件的内容作为命令的输入
 # 输入重定向操作符有 < 和 <<
-# // 利用wc统计输入文件的行数、单词数、字符数wc</etc/shadow
+# // 利用wc统计输入文件的行数、单词数、字符数
+wc</etc/shadow
 # 41 41 1275
 # << 是告诉shell当前命令的标准输入是来自命令行中一对分隔号之间的内容
 # 把一对分隔号aa之间的内容作为wc命令的输入，分隔号可以是任意字符
@@ -28,10 +29,10 @@ ls / dev / sda[12345]
 # 3.2 输出重定向
 # 输出重定向是指把命令的输出结果保存在一个指定文件中（常用）
 # 输出重定向操作符： > 和 >>
-# ALW-VM% ps -ef >ps.txt
-# ALW-VM% ls
+ps -ef >ps.txt
+ls
 # a ps.txt testgfile1
-# ALW-VM% vim ps.txt
+vim ps.txt
 # > 与 >>的区别：
 # 如果 > 后面指定的文件不存在，则会自动创建；如果存在，则覆盖
 # >> 操作符不会覆盖原文件，会把新的信息追加到原文件
@@ -41,9 +42,9 @@ ls / dev / sda[12345]
 # 4. shell的管道
 # 管道可以把很多命令连接起来，可以把第一个命令的输出当作第二个命令的输入，以此类推
 # 管道符： |
-# ALW-VM% ps -ef | grep httpd
+ps -ef | grep httpd
 # juntaran 38489 38426 0 20:19 pts/3 00:00:00 grep httpd
-# ALW-VM% ps -ef | grep httpd | wc -l1
+ps -ef | grep httpd | wc -l1
 
 # 5. shell的引用
 # bash中有很多特殊字符，本身就具有特殊含义。如果shell的参数中使用它们就会出现问题。

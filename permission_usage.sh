@@ -17,3 +17,8 @@ chmod -R a+r *
 chmod 777 file
 #语法为：
 chmod abc file
+
+要递归操作给定目录下的所有文件和目录，请使用chmod带有-R, ( --recursive) 选项的命令。递归更改文件权限的一般语法如下：
+chmod -R MODE DIRECTORY
+
+chmod -R 755 /var/www/html

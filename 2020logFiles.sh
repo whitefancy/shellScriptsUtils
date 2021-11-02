@@ -32,6 +32,8 @@ if [ ! -f "$target_file" ]; then
   touch "$target_file"
 fi
 
+# 判断目录是否存在
+[ ! -d "/path/to/dir" ] && echo "Directory /path/to/dir DOES NOT exists."
 
 strB="2020"
 #创建临时保存日志到数组 A 日志文件名  B 日志末尾几行

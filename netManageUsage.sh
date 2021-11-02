@@ -298,7 +298,7 @@ nohup java -jar /home/buwenfeng/dummy-0.0.1-SNAPSHOT.jar >temp8.log --server.por
 
 自然就会想到如何将shell的一行命令拆成多行去执行。
 
-shell已经为我们准备好了这个续行符 "\"，来把一行命令分解成多行
+shell已经为我们准备好了这个续行符 "\"，来把一行命令分解成多行 换行符
 
 shell命令行下反斜线"\"有两种含义:
 
